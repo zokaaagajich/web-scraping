@@ -2,16 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 
 # Fetch HTML
-website = 'https://www.kiwi.com/en/search/results/belgrade-serbia/paris-france'
+url = 'https://www.kiwi.com/en/search/results/belgrade-serbia/paris-france'
 try: 
-    response = requests.get(website) 
+    response = requests.get(url) 
 except requests.exceptions.RequestException as err:
     print("Error fetching page")
     exit()    
-content = response.text
+html = response.text
 
 # Parse HTML
-soup = BeautifulSoup(content, 'lxml')
+soup = BeautifulSoup(html, 'lxml')
 
 print(soup)
 print(soup.find_all('a'))
