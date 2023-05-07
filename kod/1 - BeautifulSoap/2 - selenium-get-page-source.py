@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 
 website = 'https://www.kiwi.com/en/search/results/belgrade-serbia/malaga-spain'
-path = '/usr/local/bin/chromedriver_mac64/chromedriver'
+path = '/usr/local/bin/chromedriver_mac64_arm64/chromedriver'
 service = Service(executable_path=path) 
 driver = webdriver.Chrome(service=service)
 driver.get(website)
