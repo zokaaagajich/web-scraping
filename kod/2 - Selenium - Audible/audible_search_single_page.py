@@ -5,9 +5,7 @@ sys.path.append('../')
 
 import audible_search_shared_methods as audible_shared
 import helpers
-from selenium.common import exceptions
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 def main():
