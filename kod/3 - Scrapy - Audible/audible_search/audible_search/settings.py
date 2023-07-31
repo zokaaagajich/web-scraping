@@ -12,7 +12,6 @@ BOT_NAME = 'audible_search'
 SPIDER_MODULES = ['audible_search.spiders']
 NEWSPIDER_MODULE = 'audible_search.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'audible_search (+http://www.yourdomain.com)'
 

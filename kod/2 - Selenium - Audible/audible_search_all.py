@@ -36,10 +36,11 @@ def main():
         # pagination
         pagination = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//ul[contains(@class, "pagingElements")]')))
         pages = pagination.find_elements(By.TAG_NAME, value='li')
-        last_page = int(pages[-2].text)
+        last_page = int(pages[-2].get_attribute("innerText"))
         current_page = 1
 
         while current_page <= last_page:
+            print(current_page)
             container = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'adbl-impression-container ')))
             titles, authors, release_dates, prices = audible_shared.collect_books_info(container)
             book_titles.extend(titles)
@@ -49,7 +50,7 @@ def main():
             current_page += 1
 
             try:
-                next_page = driver.find_element(By.XPATH, value='//span[contains(@class, "nextButton")]')
+                next_page = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//span[contains(@class, "nextButton")]')))
                 next_page.click()
             except: 
                 pass

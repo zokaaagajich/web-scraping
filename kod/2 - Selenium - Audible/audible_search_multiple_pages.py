@@ -26,7 +26,7 @@ def main():
     # pagination
     pagination = driver.find_element(By.XPATH, value='//ul[contains(@class, "pagingElements")]')
     pages = pagination.find_elements(By.TAG_NAME, value='li')
-    last_page = int(pages[-2].text)
+    last_page = int(pages[-2].get_attribute("innerText"))
     current_page = 1
 
     while current_page <= last_page:
@@ -36,13 +36,15 @@ def main():
         book_authors.extend(authors)
         book_release_dates.extend(release_dates)
         book_prices.extend(prices)
+        driver.get(website + '?page=' + str(current_page))
         current_page += 1
 
-        try:
-            next_page = driver.find_element(By.XPATH, value='//span[contains(@class, "nextButton")]')
-            next_page.click()
-        except: 
-            pass
+        # try:
+        #     next_page = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//span[contains(@class, "nextButton")]')))
+        #     next_page.click()
+        # except:
+        #     print('Failed to find or click the next button, so navigating via URL')
+        #     pass
 
     end_time = time.time()
     execution_time = end_time - start_time

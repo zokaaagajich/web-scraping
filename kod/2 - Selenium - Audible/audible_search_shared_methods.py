@@ -42,7 +42,8 @@ def collect_books_info(container):
         
         price_element = book.find_element(By.XPATH, value='.//div[contains(@class, "adblBuyBoxPrice")]')
         if price_element is not None:
-            book_prices.append(helpers.extract_regular_price(price_element.text.strip()))
+            price = price_element.find_element(By.XPATH, value='.//p[contains(@class, "buybox-regular-price")]').get_attribute("innerText")
+            book_prices.append(helpers.extract_regular_price(price))
         else:
             book_prices.append('-') 
 
